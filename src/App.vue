@@ -28,6 +28,9 @@
         },
         methods:{
             NewQuote(quote){
+                if( this.quotes.lenght >= this.maxQuotes){
+                    return alert('please Delete quote first')
+                }
                 this.quotes.push(quote);
             },
             deletedQuote(index){
