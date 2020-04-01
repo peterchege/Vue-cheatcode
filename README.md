@@ -6,7 +6,7 @@
 
 ``` bash
 # Navigate to the folder
-cd quotes
+cd <filename>
 
 # install dependencies
 npm install

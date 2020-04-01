@@ -10,21 +10,24 @@
                         <input
                                 type="text"
                                 id="email"
-                                class="form-control">
+                                class="form-control"
+                                v-model="userData.email">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input
                                 type="password"
                                 id="password"
-                                class="form-control">
+                                class="form-control"
+                                v-model="userData.password">
                     </div>
                     <div class="form-group">
                         <label for="age">Age</label>
                         <input
                                 type="number"
                                 id="age"
-                                class="form-control">
+                                class="form-control"
+                                v-model="userData.age">
                     </div>
 
                 </div>
@@ -36,7 +39,8 @@
                     <textarea
                             id="message"
                             rows="5"
-                            class="form-control"></textarea>
+                            class="form-control"
+                            v-model="message"></textarea>
                 </div>
             </div>
             <div class="row">
@@ -101,10 +105,10 @@
                         <h4>Your Data</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Mail:</p>
-                        <p>Password:</p>
-                        <p>Age:</p>
-                        <p>Message: </p>
+                        <p>Mail: {{ userData.email }}</p>
+                        <p>Password:{{ userData.password }} </p>
+                        <p>Age:{{ userData.age }}</p>
+                        <p>Message:{{ message }} </p>
                         <p><strong>Send Mail?</strong></p>
                         <ul>
                             <li></li>
@@ -121,6 +125,18 @@
 
 <script>
     export default {
+        data() {
+            return { 
+                userData:{
+                    email: '',
+                    password: '',
+                    age: 26
+                    },
+                    message:'New text'
+                
+                }
+
+            }
     }
 </script>
 
