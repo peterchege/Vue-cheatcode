@@ -12,7 +12,7 @@
                 this.$store.commit('increment');
             },
             decrement() {
-                this.$store.commit('decremenr');
+                this.$store.commit('decrement');
             }
         }
     }
