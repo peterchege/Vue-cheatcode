@@ -7,7 +7,7 @@
 
 <script>
     export default {
-         methods: {
+        methods: {
             increment() {
                 this.$store.commit('increment');
             },
