@@ -1,10 +1,11 @@
 <template>
     <div>
-
+        <app-stock v-for="stock in stocks" > </app-stock>
     </div>
 </template>
 
 <script>
+import Stock from './Stock.vue';
 export default {
     date(){
         return{
@@ -16,6 +17,9 @@ export default {
                 
             ]
         }
+    },
+    components: {
+        appStock: Stock
     }
 }
 </script>
