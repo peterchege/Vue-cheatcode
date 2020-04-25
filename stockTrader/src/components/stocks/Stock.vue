@@ -20,7 +20,8 @@
                 <div class="pull-right">
                     <button
                             class="btn btn-success"
-                            >Buy Now</button>
+                            @click="buyStock"
+                            >Buy</button>
                 </div>
         </div>
     </div>
@@ -34,6 +35,17 @@
             return {
                 quantity: 0
             }
-        },        
+        },   
+        methods: {
+            buyStock(){
+                const order = {
+                    stockId : this.stock.id,
+                    stockPrice : this.stock.price,
+                    quantity: this.quantity
+                };
+                console.log(order);
+                this.quantity = 0;
+            }
+        },     
     }
 </script>
