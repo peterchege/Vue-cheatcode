@@ -14,6 +14,7 @@
                         type="number"
                         class="form-control"
                         placeholder="Quantity"
+                        v-model="quantity"
                         >
             </div>
                 <div class="pull-right">
@@ -28,6 +29,11 @@
 
 <script>
     export default {
-        props: ['stock']        
+        props: ['stock'],
+        data() {
+            return {
+                quantity: 0
+            }
+        },        
     }
 </script>
