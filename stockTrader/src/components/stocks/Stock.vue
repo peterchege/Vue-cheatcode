@@ -1,6 +1,5 @@
 <template>
     <div class="col-sm-6 col-md-4">
-        <h2> code here </h2>
         <div class="panel panel-success">
             <div class="panel-heading">
                 <h3 class="panel-title">
@@ -8,26 +7,26 @@
                     <small>(Price: {{ stock.price }})</small>
                 </h3>
             </div>
-        </div>
-        <div class="panel-body">
-            <div class="pull-left">
-                <input 
-                        type="number"
-                        class="form-control"
-                        placeholder="Quantity"
-                        v-model="quantity"
-                        >
-            </div>
-                <div class="pull-right">
-                    <button
-                            class="btn btn-success"
-                            @click="buyStock"
-                            :disabled="quantity <= 0 || !Number.isInteger(quantity) "
-                            >Buy</button>
+            <div class="panel-body">
+                <div class="pull-left">
+                    <input 
+                            type="number"
+                            class="form-control"
+                            placeholder="Quantity"
+                            v-model="quantity"
+                            >
                 </div>
+                    <div class="pull-right">
+                        <button
+                                class="btn btn-success"
+                                @click="buyStock"
+                                :disabled="quantity <= 0 || !Number.isInteger(quantity) "
+                                >Buy
+                        </button>
+                    </div>
+            </div>    
         </div>
     </div>
-    
 </template>
 
 <script>
