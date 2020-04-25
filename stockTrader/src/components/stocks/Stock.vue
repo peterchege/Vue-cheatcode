@@ -1,5 +1,6 @@
 <template>
     <div class="col-sm-6 col-md-4">
+        <h2> code here </h2>
         <div class="panel panel-success">
             <div class="panel-heading">
                 <h3 class="panel-title">
@@ -21,6 +22,7 @@
                     <button
                             class="btn btn-success"
                             @click="buyStock"
+                            :disabled="quantity <= 0 || !Number.isInteger(quantity) "
                             >Buy</button>
                 </div>
         </div>
