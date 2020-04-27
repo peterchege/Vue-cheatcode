@@ -4,7 +4,7 @@
             <div class="panel-heading">
                 <h3 class="panel-title">
                     {{ stock.name }}
-                    <small>(Price: {{ stock.price }})</small>
+                    <small>(Price: {{ stock.price }} | {{ stock.quantity }})</small>
                 </h3>
             </div>
             <div class="panel-body">
@@ -19,9 +19,9 @@
                     <div class="pull-right">
                         <button
                                 class="btn btn-success"
-                                @click="buyStock"
+                                @click="sellStock"
                                 :disabled="quantity <= 0 || !Number.isInteger(quantity) "
-                                >Buy
+                                >Sell
                         </button>
                     </div>
             </div>    
@@ -38,15 +38,7 @@
             }
         },   
         methods: {
-            buyStock(){
-                const order = {
-                    stockId : this.stock.id,
-                    stockPrice : this.stock.price,
-                    quantity: this.quantity
-                };
-                this.$store.dispatch('buyStock', order);
-                this.quantity = 0;
-            }
-        },     
+            
+        } 
     }
 </script>
