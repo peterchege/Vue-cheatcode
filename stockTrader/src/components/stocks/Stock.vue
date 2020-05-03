@@ -9,23 +9,23 @@
             </div>
             <div class="panel-body">
                 <div class="pull-left">
-                    <input 
+                    <input
                             type="number"
                             class="form-control"
                             placeholder="Quantity"
                             v-model="quantity"
-                            :class="{ danger : insufficientFunds }"
-                            >
+                            :class="{danger: insufficientFunds}"
+                    >
                 </div>
-                    <div class="pull-right">
-                        <button
-                                class="btn btn-success"
-                                @click="buyStock"
-                                :disabled="insufficientFunds || quantity <= 0 || !Number.isInteger(quantity) "
-                                >{{insufficientFunds ? 'Insufficient Funds' : 'Buy'}}
-                        </button>
-                    </div>
-            </div>    
+                <div class="pull-right">
+                    <button
+                            class="btn btn-success"
+                            @click="buyStock"
+                            :disabled="insufficientFunds || quantity <= 0 || !Number.isInteger(quantity)"
+                    >{{ insufficientFunds ? 'Insufficient Funds' : 'Buy' }}
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -45,23 +45,23 @@
             }
         },
         computed: {
-            funds(){
+            funds() {
                 return this.$store.getters.funds;
             },
-            insufficientFunds(){
+            insufficientFunds() {
                 return this.quantity * this.stock.price > this.funds;
             }
-        },   
+        },
         methods: {
-            buyStock(){
+            buyStock() {
                 const order = {
-                    stockId : this.stock.id,
-                    stockPrice : this.stock.price,
+                    stockId: this.stock.id,
+                    stockPrice: this.stock.price,
                     quantity: this.quantity
                 };
                 this.$store.dispatch('buyStock', order);
                 this.quantity = 0;
             }
-        },     
+        }
     }
 </script>

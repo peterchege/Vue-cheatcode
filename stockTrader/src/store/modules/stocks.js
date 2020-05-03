@@ -5,37 +5,37 @@ const state = {
 };
 
 const mutations = {
-    'SET_STOCKS' (state, stocks){
+    'SET_STOCKS' (state, stocks) {
         state.stocks = stocks;
     },
-    'RND_STOCKS' (state){
+    'RND_STOCKS' (state) {
         state.stocks.forEach(stock => {
-            stock.price = Math.random(stock.price * (1 + Math.random() - 0.5));
+            stock.price = Math.round(stock.price * (1 + Math.random() - 0.5));
         });
     }
 };
 
 const actions = {
-    buyStocks: ({ commit }, order) =>{
+    buyStock: ({commit}, order) => {
         commit('BUY_STOCK', order);
     },
-    initStocks: ({ commit }) =>{
-        commit('SET_STOCKS', stocks)
+    initStocks: ({commit}) => {
+        commit('SET_STOCKS', stocks);
     },
-    randomizeStocks: ({commit}) =>{
+    randomizeStocks: ({commit}) => {
         commit('RND_STOCKS');
     }
 };
 
 const getters = {
-    stocks : state =>{
+    stocks: state => {
         return state.stocks;
     }
-}
+};
 
 export default {
     state,
     mutations,
     actions,
     getters
-}
+};
