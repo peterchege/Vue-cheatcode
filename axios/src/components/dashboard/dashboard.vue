@@ -15,7 +15,7 @@
       }
     },
     created(){
-      axios.get('https://axios-11287.firebaseio.com/user.json')
+      axios.get('/user.json')
       .then(res => {
         console.log(res)
         const data = res.data
