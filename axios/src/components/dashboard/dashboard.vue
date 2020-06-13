@@ -20,7 +20,7 @@
         console.log(res)
         const data = res.data
         const users = []
-        for(let key in data){
+        for(let key in data){ 
           const user = data[key]
           user.id = key
           users.push(user)
