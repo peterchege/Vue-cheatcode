@@ -39,6 +39,13 @@
           password: this.password,
         }
         console.log(formData)
+        axios.post('/accounts:signInWithPassword?key=AIzaSyAmx5ysQ5qwambuHqYwaQ37834Fuar52H4', {
+          email: formData.email,
+          password: formData.password,
+          returnSecureToken: true
+        })
+          .then(res => console.log(res))
+          .catch(err => console.log(err))
       }
     }
   }
