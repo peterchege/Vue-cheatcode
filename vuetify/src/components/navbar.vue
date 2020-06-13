@@ -12,7 +12,15 @@
            </v-btn>
        </v-toolbar>
        <v-navigation-drawer app v-model="drawer">
+           <v-list>
+               <v-list-tile>
+                   <v-list-tile-action>
+                       <v-icon>dashboard</v-icon>
+                       <v-list-tile-content></v-list-tile-content>
+                   </v-list-tile-action>
+               </v-list-tile>
 
+           </v-list>
        </v-navigation-drawer>
 
    </nav>
