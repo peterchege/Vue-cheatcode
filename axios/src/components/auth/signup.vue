@@ -102,7 +102,8 @@
           hobbies: this.hobbyInputs.map(hobby => hobby.value),
           terms: this.terms
         }
-        
+        console.log(formData)
+        this.$store.dispach('signup', {email:formData.email, password:formData.password})
       }
     }
   }

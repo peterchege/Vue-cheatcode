@@ -39,7 +39,7 @@
           password: this.password,
         }
         console.log(formData)
-        
+        this.$store.dispach('login', {email:formData.email, password:formData.password})
       }
     }
   }
