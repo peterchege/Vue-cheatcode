@@ -55,14 +55,20 @@ export default new Vuex.Store({
                 .catch(err => console.log(err))
         },
 
-        storeUser ({ commit }, userData) {
-          globalAxios.post('/user.json', userData)
+        storeUser ({ commit, state }, userData) {
+          if (!state.idToken){
+            return
+          }
+          globalAxios.post('/user.json' + '?auth=' + state.idToken, userData)
             .then(res => console.log(res))
             .catch(error => console.log(error))
         },
 
         fetchUser({ commit }){
-          globalAxios.get('/user.json')
+         if (!state.idToken) {
+           return
+         }
+         globalAxios.get('/user.json' + '?auth=' + state.idToken)
             .then(res => {
               console.log(res)
               const data = res.data
