@@ -2,7 +2,7 @@
   <div id="dashboard">
     <h1>That's the dashboard!</h1>
     <p>You should only get here if you're authenticated!</p>
-    <p>Your email address {{ email }} </p>
+    <p v-if="email">Your email address {{ email }} </p>
   </div>
 </template>
 
@@ -11,7 +11,7 @@
   export default {
     computed:{
       email() {
-        return this.$store.getters.user.email
+        return !this.$store.getters.user ? false : this.$store.getters.user.email
       }
     },
     created(){
