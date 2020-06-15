@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from './axios-auth';
+import axios from './axios-auth'
+import globalAxios from 'axios'
 
 
 Vue.use(Vuex)
@@ -18,7 +19,7 @@ export default new Vuex.Store({
 
     },
     actions: {
-        signup({ commit }, authData) {
+        signup({ commit, dispatch }, authData) {
             axios.post('/accounts:signUp?key=AIzaSyAmx5ysQ5qwambuHqYwaQ37834Fuar52H4', {
                     email: authData.email,
                     password: authData.password,
@@ -30,6 +31,7 @@ export default new Vuex.Store({
                         token : res.data.idToken,
                         userId : res.data.localId
                     })
+                    dispatch('storeUser', authData)
                 })
                 .catch(err => console.log(err))
         },
@@ -49,7 +51,13 @@ export default new Vuex.Store({
                 .catch(err => console.log(err))
         },
 
-        fetchUser({commit}){
+        storeUser ({ commit }, userData) {
+          globalAxios.post('/user.json', userData)
+            .then(res => console.log(res))
+            .catch(error => console.log(error))
+        },
+
+        fetchUser({ commit }){
           axios.get('/user.json')
             .then(res => {
               console.log(res)
