@@ -9,24 +9,21 @@ module.exports = {
     filename: 'build.js'
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.vue$/,
-        loader: 'vue-loader',
+        loader: 'vue',
         options: {
-          loaders: {
-          }
-          // other vue-loader options go here
+          // vue-loader options go here
         }
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        loader: 'babel',
         exclude: /node_modules/
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
+        loader: 'file',
         options: {
           name: '[name].[ext]?[hash]'
         }
@@ -35,16 +32,12 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue'
     }
   },
   devServer: {
     historyApiFallback: true,
-    noInfo: true,
-    overlay: true
-  },
-  performance: {
-    hints: false
+    noInfo: true
   },
   devtool: '#eval-source-map'
 }
@@ -59,7 +52,6 @@ if (process.env.NODE_ENV === 'production') {
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
       compress: {
         warnings: false
       }
