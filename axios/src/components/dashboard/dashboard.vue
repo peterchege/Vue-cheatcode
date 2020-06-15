@@ -9,13 +9,13 @@
 <script>
   import axios from 'axios';
   export default {
-    data(){
-      return{
-        email:''
+    computed:{
+      email() {
+        return this.$store.getters.user.email
       }
     },
     created(){
-      
+      this.$store.dispatch('fetchUser')
     }
   }
 </script>

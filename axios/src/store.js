@@ -9,12 +9,16 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         idToken: null,
-        userId: null
+        userId: null,
+        user: null
     },
     mutations: {
         authUser (state, userData) {
             state.idToken = userData.token
             state.userId = userData.userId
+        },
+        storeUser(state, user) {
+            state.user = user
         }
 
     },
@@ -58,7 +62,7 @@ export default new Vuex.Store({
         },
 
         fetchUser({ commit }){
-          axios.get('/user.json')
+          globalAxios.get('/user.json')
             .then(res => {
               console.log(res)
               const data = res.data
@@ -69,7 +73,7 @@ export default new Vuex.Store({
                 users.push(user)
               }
               console.log(users)
-              this.email = users[0].email
+              commit('storeUser', users[0])
 
             })
             .catch(err => console.log(err))
@@ -77,6 +81,8 @@ export default new Vuex.Store({
 
     },
     getters: {
-
+      user (state){
+        return state.user
+      }
     }
 })
