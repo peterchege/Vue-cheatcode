@@ -19,6 +19,10 @@ export default new Vuex.Store({
         },
         storeUser(state, user) {
             state.user = user
+        },
+        clearAuthData(state) {
+          state.idToken = null
+          state.userId =null
         }
 
     },
@@ -54,7 +58,9 @@ export default new Vuex.Store({
                 })
                 .catch(err => console.log(err))
         },
-
+        logout({commit}) {
+            commit('clearAuthData')
+        },
         storeUser ({ commit, state }, userData) {
           if (!state.idToken){
             return
